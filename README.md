@@ -1,151 +1,174 @@
-# Projeto PE - Landing page do Centro Académico Clínico dos Açores (CACA)
+# Refatorização e Desenvolvimento da Aplicação Web do CACA (Centro Académico Clínico dos Açores)
 
-Este repositório contém o código-fonte e a documentação referente ao projeto **PE** da unidade curricular de Tecnologias Web.
+Este repositório contém o código-fonte da aplicação web do **Centro Académico Clínico dos Açores (CACA)**, desenvolvida como projeto prático na unidade curricular de **Tecnologias Web** (Projeto PE).
 
-A documentação da primeira e segunda fase (PI1 e PI2) pode ser consultada no repositório anterior: [Verotic/Projeto-PEI2](https://github.com/Verotic/Projeto-PEI2).
-
-## a) Identificação do grupo (PE)
-
-- Adriano Furtado Arruda - 2024111815
-- Júlia Melo Freitas - 2024114388
-- Daniela de Lima Gabriel- 30230007
-
-## b) Descrição do Projeto (PE)
-
-O objetivo principal do projeto é a **persistência de dados e integração de APIs externas** na landing page do CACA, utilizando tecnologias como IndexedDB e consumo de serviços web de terceiros, mantendo a arquitetura modular e boas práticas de UI/UX. 
-*(Nota: As funcionalidades descritas abaixo foram desenvolvidas e implementadas ao longo do projeto.)*
-
-### Funcionalidades Implementadas e Distribuição de Tarefas
-
-Nesta fase, as tarefas foram realizadas de acordo com os planos de trabalho de cada elemento da equipa:
-
-#### 1. Eventos e API de Mapas (Adriano)
-Responsável pela base da plataforma: Gestão de Eventos e a sua localização no mapa.
--   **CRUD de Eventos:** Criação da página de administração (`admin-eventos.html`) com formulários e lógica para adicionar, visualizar, editar e remover eventos utilizando a IndexedDB para persistência de dados.
--   **Integração na Homepage:** Exibição dinâmica de eventos na página principal com imagens e dados vindos da base de dados local.
--   **API de Mapas:** Integração de uma API de mapas para mostrar um mapa interativo com a localização do evento criado.
--   **Módulos:** `js/modules/EventManager.js`, `js/modules/HomepageEvents.js`, `js/services/MapService.js` e `js/admin-eventos.js`.
-
-#### 2. Newsletter, UI/UX e API Meteorológica (Daniela)
-Foco na Interação com o Utilizador, captura de contactos e previsão do tempo para os eventos criados.
--   **Newsletter com Persistência:** Criação do formulário de subscrição, validação robusta (contraste de cor, etc.) e gravação local na IndexedDB, com feedback visual.
--   **API Meteorológica:** Consumo da API OpenWeatherMap para apresentar as condições climáticas locais com indicadores visuais (fundo dinâmico e loading spinner).
--   **UI/UX e Acessibilidade:** Garantia de que os novos formulários e listagens seguem o design original, são responsivos e acessíveis em diferentes browsers (ex: Safari).
--   **Módulos:** `js/modules/NewsletterManager.js` e `js/services/WeatherService.js`.
-
-#### 3. Core DB, API de Notícias e Integração (Julia)
-Responsabilidade da Arquitetura da Base de Dados, consumo de Notícias e Documentação.
--   **Core IndexedDB:** Criação da classe principal para ligação à base de dados e criação das Object Stores (tabelas) para Eventos e Newsletter.
--   **API de Notícias/RSS:** Consumo de um feed de notícias de saúde/CACA através de API ou RSS público e apresentação dinâmica.
--   **Integração e Documentação:** Inicialização de todas as classes no `main.js` e redação deste `README.md`.
--   **Módulos:** `js/core/Database.js`, `js/services/NewsService.js` e `main.js`.
-
-## c) Estrutura do Projeto e Tecnologias
-
-A arquitetura continua focada na **decomposição funcional**, **modularização** e **Programação Orientada a Objetos (POO)**:
-
-### Estrutura de Pastas:
-```
-/
-├── assets/             # Imagens e recursos estáticos
-├── styles/             # Módulos CSS separados por componente/área
-├── js/                 # Código JavaScript
-│   ├── core/           # Lógica central da aplicação
-│   │   └── Database.js # Gestão global e conexão da IndexedDB
-│   ├── modules/        # Módulos independentes (Classes)
-│   │   ├── EventManager.js
-│   │   ├── HomepageEvents.js
-│   │   └── NewsletterManager.js
-│   ├── services/       # Serviços e consumo de APIs externas
-│   │   ├── MapService.js
-│   │   ├── WeatherService.js
-│   │   └── NewsService.js
-│   ├── admin-eventos.js# Lógica específica da página de administração
-│   └── main.js         # Ponto de entrada e integração da aplicação
-├── index.html          # Estrutura HTML
-├── admin-eventos.html  # Página de Administração de Eventos (CRUD)
-├── style.css           # Entry-point CSS
-└── README.md           # Documentação
-```
-
-## d) Identidade Visual e Design
-
-O nosso protótipo base (mockup) foi desenvolvido no Figma:
-[Figma do Projeto TE1](https://www.figma.com/design/SNOlEnaHQc2sBNPphX713Q/TE1?node-id=0-1&t=g3v6JbHW5wJggUtT-1)
+O projeto consiste na refatorização e unificação das funcionalidades desenvolvidas nas fases anteriores (PEI1, PEI2 e PEI3) numa aplicação moderna baseada numa framework front-end (React) e na implementação de uma API back-end robusta para a gestão de utilizadores e persistência de dados.
 
 ---
 
-## Benchmarking (PE)
+## a) Identificação do Grupo (PE)
 
-### Resultados do Benchmark
-
-![Benchmark do projeto CACA - PE](benchmark.png)
-
----
-
-# PE Project - Azores Academic Clinical Center (CACA) Landing Page
-
-This repository contains the source code and documentation for the **PE** project of the Web Technologies course.
-
-Documentation for the first and second phases (PI1 and PI2) can be found in the previous repository: [Verotic/Projeto-PEI2](https://github.com/Verotic/Projeto-PEI2).
-
-## a) Group Identification (PE)
-
-- Adriano Furtado Arruda - 2024111815
-- Júlia Melo Freitas - 2024114388
-- Daniela de Lima Gabriel - 30230007
-
-## b) Project Description (PE)
-
-The main goal of this project is **data persistence and external API integration** into the CACA landing page, using technologies like IndexedDB and consuming third-party web services, while maintaining the modular architecture and UI/UX best practices.
-
-### Implemented Features and Task Distribution
-
-#### 1. Events and Maps API (Adriano)
--   **Events CRUD:** Dedicated administration page (`admin-eventos.html`) with forms and logic to add, view, edit, and remove events using IndexedDB.
--   **Homepage Integration:** Dynamic display of upcoming events with images and data loaded from the local database.
--   **Maps API:** Integration of an interactive map to display the location of the events.
--   **Modules:** `js/modules/EventManager.js`, `js/modules/HomepageEvents.js`, `js/services/MapService.js`, and `js/admin-eventos.js`.
-
-#### 2. Newsletter, UI/UX, and Weather API (Daniela)
--   **Persistent Newsletter:** Subscription form with robust validation, improved color contrast, and local IndexedDB storage.
--   **Weather API:** Integration of OpenWeatherMap API to show expected conditions with dynamic backgrounds and loading spinners.
--   **UI/UX and Accessibility:** Ensuring responsiveness and cross-browser compatibility (e.g., Safari date fixes) for new elements.
--   **Modules:** `js/modules/NewsletterManager.js` and `js/services/WeatherService.js`.
-
-#### 3. Core DB, News API, and Integration (Julia)
--   **Core IndexedDB:** Main class to connect and create Object Stores for Events and Newsletter.
--   **News/RSS API:** Consuming a public health/CACA news feed and displaying it dynamically.
--   **Integration and Documentation:** Initializing all classes in `main.js` and maintaining the `README.md`.
--   **Modules:** `js/core/Database.js`, `js/services/NewsService.js`, and `main.js`.
-
-## c) Project Structure and Technologies
-
-### Folder Structure:
-```
-/
-├── assets/             # Images and static resources
-├── styles/             # CSS Modules
-├── js/                 # JavaScript Code
-│   ├── core/           # Core application logic (Database.js)
-│   ├── modules/        # Independent Modules (EventManager.js, HomepageEvents.js, NewsletterManager.js)
-│   ├── services/       # External APIs (MapService.js, WeatherService.js, NewsService.js)
-│   ├── admin-eventos.js# Specific logic for the events admin page
-│   └── main.js         # Application Entry Point
-├── index.html          # Main HTML Structure
-├── admin-eventos.html  # Events Administration Page (CRUD)
-├── style.css           # CSS Entry-point
-└── README.md           # Documentation
-```
-
-## d) Visual Identity and Design
-
-[TE1 Project Figma](https://www.figma.com/design/SNOlEnaHQc2sBNPphX713Q/TE1?node-id=0-1&t=g3v6JbHW5wJggUtT-1)
+- **Adriano Furtado Arruda** - 2024111815
+- **David Cardoso** - [Número de Aluno]
+- **Nelson Ponte** - [Número de Aluno]
+- **Puțan Iulia** - [Número de Aluno]
 
 ---
 
-## Benchmarking (PE)
+## b) Descrição das Tecnologias e Justificação das Escolhas
 
-### Benchmark Results
+A arquitetura do projeto foi modernizada e dividida numa solução Client-Server:
 
-![CACA Project Benchmark - PE](benchmark.png)
+### 1. Front-end: React 19 (com Vite 8)
+- **Justificação:** A transição do JavaScript nativo (vanilla JS) para o **React** permitiu estruturar a aplicação de forma altamente modular através de componentes reutilizáveis e autónomos (ex: `Header`, `LandingPage`, `AuthForms`, `EventAdmin`). O React facilita a sincronização eficiente do estado da aplicação (ex: estado de autenticação do utilizador, listagem de eventos) com a interface, melhorando significativamente a manutenção e escalabilidade do código.
+- **Vite:** Escolhido como ferramenta de build devido ao seu servidor de desenvolvimento ultrarrápido com Hot Module Replacement (HMR) instantâneo e geração de pacotes otimizados para produção.
+
+### 2. Back-end: Node.js com Express
+- **Justificação:** O **Express** é um ecossistema minimalista, rápido e altamente flexível para a criação de rotas e APIs RESTful em Node.js. Permite a partilha do ecossistema JavaScript em toda a stack, simplificando o desenvolvimento e reduzindo a complexidade de integração entre o cliente e o servidor.
+
+### 3. Base de Dados: SQLite (via `better-sqlite3`)
+- **Justificação:** Por se tratar de um projeto de cariz académico focado na portabilidade, optou-se pelo **SQLite** através do driver síncrono de alto desempenho `better-sqlite3`. Esta solução cria uma base de dados relacional armazenada num único ficheiro local (`data/caca.sqlite`), eliminando a necessidade de instalar e configurar um servidor de base de dados externo (zero-configuration), mantendo a integridade referencial dos utilizadores.
+
+### 4. Autenticação e Segurança (JWT e Crypt)
+- **Justificação:** Para sessões de utilizador sem estado (stateless) e seguras, a API utiliza tokens **JWT (JSON Web Tokens)** criados manualmente a partir do módulo nativo do Node.js `node:crypto` (algoritmo HMAC-SHA256). As passwords dos utilizadores são encriptadas antes do armazenamento utilizando o algoritmo **scrypt** com um *salt* único e verificação através de comparação segura contra ataques de temporização (`timingSafeEqual`).
+
+---
+
+## c) Estrutura e Arquitetura da Aplicação
+
+A aplicação segue o padrão clássico cliente-servidor, comunicando através de pedidos assíncronos (HTTP/JSON).
+
+```mermaid
+graph TD
+    Client[Cliente React / Vite] -->|HTTPS Requests + Bearer Token| Server[Servidor Express / Node.js]
+    Client -->|Local Storage| Token[Armazenamento de Token JWT]
+    Client -->|Local DB| IndexedDB[(IndexedDB - Gestão Eventos)]
+    Server -->|better-sqlite3| SQLite[(SQLite DB - data/caca.sqlite)]
+    Server -->|Proxy requests| WeatherAPI[API OpenWeatherMap]
+    Server -->|Proxy requests| NewsAPI[API NewsData.io]
+    Client -->|Map Rendering| Leaflet[Leaflet API]
+```
+
+### Arquitetura de Comunicação e Fluxo de Dados:
+1. **Comunicação Assíncrona:** O cliente faz pedidos utilizando a API `fetch` encapsulada no módulo `src/services/apiClient.js`. Para rotas protegidas, o token JWT (armazenado no `localStorage` após o login) é enviado no cabeçalho `Authorization: Bearer <token>`.
+2. **Proxies no Back-end:** Para evitar problemas de CORS no browser e, principalmente, **proteger chaves de API confidenciais**, as consultas meteorológicas e de notícias são encaminhadas através do servidor Express (`/api/weather/forecast` e `/api/news`), que age como proxy seguro.
+
+### Estrutura de Pastas do Projeto:
+```
+PEI3/
+├── data/                       # Armazenamento do ficheiro de base de dados SQLite
+├── docs/                       # Planos de trabalho e documentação interna
+├── js/                         # Legado da Fase 3 (módulos e código vanilla)
+├── scripts/
+│   └── dev.mjs                 # Script para execução concorrente de Front e Back
+├── server/                     # Código do Back-end (Express API)
+│   ├── auth/                   # Módulos de hashing de password e tokens JWT
+│   ├── users/                  # Repositório de dados e validações da API
+│   └── app.js                  # Configuração de endpoints e middlewares da API
+├── src/                        # Código do Front-end (React)
+│   ├── components/             # Componentes reutilizáveis da interface
+│   ├── services/               # Clientes de API e gestão de persistência local
+│   ├── styles/                 # Ficheiros CSS da aplicação
+│   ├── App.jsx                 # Componente principal do React
+│   └── main.jsx                # Ponto de entrada do cliente React
+├── tests/                      # Testes automatizados (API e base de dados)
+├── index.html                  # Ponto de entrada do Vite
+├── server.js                   # Ponto de entrada do servidor Express
+└── vite.config.js              # Configuração da ferramenta Vite
+```
+
+---
+
+## d) Funcionalidades Implementadas
+
+O projeto unifica a experiência acumulada nas fases anteriores com os novos requisitos de utilizadores:
+
+### 1. Funcionalidades Migradas e Refatorizadas
+- **Landing Page CACA:** Reconstruída integralmente em componentes React estruturados, com o carrossel do Hero dinâmico e animações de scroll ativadas por `IntersectionObserver`.
+- **Estatísticas Dinâmicas:** Exibição do gráfico interativo de evolução de apoios à investigação, animado através de variáveis CSS.
+- **Gestão de Eventos (CRUD):** Lógica da página de administração de eventos (`admin-eventos`) portada para o React, permitindo adicionar, atualizar e remover eventos armazenados localmente no browser usando a **IndexedDB** (`src/services/eventStore.js`).
+- **Mapas Interativos:** O componente `EventAdmin` utiliza o **Leaflet.js** para inicializar e exibir mapas das localizações dos eventos definidos pela equipa.
+
+### 2. Novas Funcionalidades da API de Gestão de Utilizadores
+- **Registo de Utilizadores (`POST /api/auth/register`):** Permite criar contas fornecendo Nome, Email e Password. Inclui validação sintática e impede a duplicação de emails.
+- **Autenticação (`POST /api/auth/login`):** Valida credenciais e gera o Token JWT caso coincidam.
+- **Perfil do Utilizador (`GET /api/users/me` e `PUT /api/users/me`):** Permite ao utilizador consultar e alterar os seus dados pessoais (Nome e Email). Requer token válido passado como Bearer Token.
+- **Permissões Administrativas (`GET /api/admin/users`):** Endpoint de administração restrito a utilizadores que possuam o cargo `admin`, demonstrando controlo de acessos por papéis (RBAC).
+
+---
+
+## e) Como Correr a Aplicação
+
+### Pré-requisitos
+- Ter o [Node.js](https://nodejs.org/) instalado na máquina (versão 18 ou superior recomendada).
+
+### 1. Instalar as dependências
+No diretório raiz do projeto, execute o comando:
+```bash
+npm install
+```
+
+### 2. Configurar Variáveis de Ambiente
+Copie o ficheiro `.env.example` para `.env` e configure as chaves necessárias:
+```bash
+cp .env.example .env
+```
+Abra o ficheiro `.env` e edite os valores das chaves:
+- `JWT_SECRET`: Uma chave secreta segura para os tokens JWT.
+- `SQLITE_DB_PATH`: Caminho para a base de dados SQLite (ex: `data/caca.sqlite`).
+- `WEATHER_API_KEY`: Chave da API OpenWeatherMap.
+- `NEWS_API_KEY`: Chave da API NewsData.io.
+
+### 3. Executar o Servidor em Desenvolvimento
+Para correr o cliente Vite e o servidor Express em simultâneo (usando o script de execução concorrente), execute:
+```bash
+npm run dev
+```
+A aplicação estará acessível em `http://127.0.0.1:3000/`.
+
+### 4. Executar os Testes Automatizados
+O projeto conta com testes unitários e de integração baseados no executor de testes nativo do Node.js (`node --test`). Para os executar:
+```bash
+npm test
+```
+
+---
+
+## f) Decisões de Design e Implementação (Desafios e Soluções)
+
+- **Desafio 1: Sessões Stateless Descentralizadas**
+  * *Contexto:* Fazer com que o servidor controle acessos sem persistência em cookies tradicionais.
+  * *Solução:* Foi construído um sistema nativo de autenticação com JWT que codifica a identidade do utilizador e as suas permissões no token, permitindo validações imediatas sem consultas adicionais e mantendo a API perfeitamente RESTful.
+- **Desafio 2: Execução Concorrente**
+  * *Contexto:* A equipa precisava de uma forma simples de iniciar tanto o front-end quanto o back-end sem necessitar de abrir múltiplos terminais.
+  * *Solução:* Foi desenvolvido o script auxiliar `scripts/dev.mjs` que utiliza processos filhos no Node.js para lançar e sincronizar a execução do Vite e do Express.
+- **Desafio 3: Integração do Leaflet em React**
+  * *Contexto:* O Leaflet requer acesso direto a elementos DOM montados no ecrã para calcular dimensões.
+  * *Solução:* Utilizou-se o ciclo de vida do React (`useEffect`) em conjunto com pequenos atrasos assíncronos (`setTimeout`) para assegurar que a div do mapa estava totalmente renderizada no DOM antes da chamada de inicialização da biblioteca Leaflet.
+
+---
+
+## g) Acessibilidade, Responsividade e Segurança
+
+### 1. Segurança
+- **Passwords Seguras:** Utilização do algoritmo criptográfico `scrypt` com um salt aleatório para cada password, garantindo proteção contra ataques de dicionário e tabelas rainbow.
+- **Comparação Temporizada:** Uso de `timingSafeEqual` para comparação de chaves criptográficas, prevenindo ataques de canal lateral (timing attacks).
+- **Controlo de Acesso:** Proteção do endpoint `/api/admin/users` com middleware dedicado de validação de cargo (`requireRole('admin')`).
+- **Validação de Entrada:** Uso de padrões robustos de verificação no back-end para filtrar entradas maliciosas e prevenir ataques de injeção.
+
+### 2. Acessibilidade (a11y)
+- **Navegação por Teclado:** Foco explícito e ordem de tabulação lógica para todos os botões e campos de formulário.
+- **Leitores de Ecrã:** Atributos como `aria-live="polite"` no componente `App` para garantir que mensagens de erro ou sucesso na API são lidas instantaneamente aos utilizadores. Atributos `aria-label` em botões de imagem ou ícones sem texto legível.
+- **HTML Semântico:** Utilização de tags HTML5 estruturais (`<main>`, `<section>`, `<article>`, `<header>`, `<footer>`) facilitando o rastreamento da página.
+
+### 3. Responsividade
+- A folha de estilos do projeto (`src/styles/app.css`) foi desenhada com Flexbox e Grid CSS, garantindo layouts fluidos.
+- Foram implementadas media queries para se adaptar a ecrãs móveis (mobile), tablets e desktops, mantendo a integridade de leitura das estatísticas e grelhas de notícias.
+
+---
+
+## h) APIs Externas Utilizadas
+
+1. **OpenWeatherMap API:** Consumida para obter a previsão do tempo de 5 dias em formato JSON. Utilizada para informar a previsão climática para os eventos e localizações criadas na plataforma.
+2. **NewsData.io API:** Utilizada para obter notícias de saúde regionais mais recentes em tempo real.
+3. **Leaflet.js Map API:** Utilizada no cliente para renderização de mapas geográficos baseados em dados do OpenStreetMap, para a visualização dos eventos criados no painel de administração.
