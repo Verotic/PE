@@ -40,7 +40,6 @@ function renderEvents(events) {
     events.forEach(event => {
         const eventItem = document.createElement('div');
         eventItem.className = 'event-item';
-        // Ajustamos o CSS para que a info do evento ocupe a largura e o mapa e as ações fiquem em baixo ou ao lado
         eventItem.style.flexDirection = 'column';
         eventItem.style.alignItems = 'stretch';
         
@@ -73,7 +72,7 @@ function renderEvents(events) {
         // Carregar meteorologia de forma assíncrona (Daniela)
         loadWeather(event.local, event.date, event.id);
         
-        // Inicializar o Mapa (Adriano)
+        // Inicializar o Mapa 
         // Usamos um setTimeout para garantir que a div já foi renderizada e o Leaflet consegue calcular o tamanho
         setTimeout(() => {
             mapService.initMap(`map-${event.id}`, event.local);

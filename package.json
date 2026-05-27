@@ -1,27 +1,29 @@
 {
-  "name": "pei3",
+  "name": "caca-pe",
   "version": "1.0.0",
-  "description": "Este repositório contém o código-fonte e a documentação referente à **terceira e última fase (PI3)** do projeto da unidade curricular de Tecnologias Web.",
+  "description": "Aplicacao web do Centro Academico Clinico dos Acores com front-end em React e API de gestao de utilizadores.",
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "vite",
+    "dev:server": "node server.js",
+    "build": "vite build",
+    "preview": "vite preview",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Verotic/Project-PEI3.git"
+    "test": "node --test tests/*.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Verotic/Project-PEI3/issues"
-  },
-  "homepage": "https://github.com/Verotic/Project-PEI3#readme",
   "dependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "better-sqlite3": "^12.10.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "vite": "^8.0.14"
   }
 }
